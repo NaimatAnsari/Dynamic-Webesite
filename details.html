@@ -8,9 +8,36 @@
 </head>
 <body>
     <div class="container">
-        
+        <div class="row p-5" id="proD"></div>
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = parseInt(urlParams.get('CardId'));
+
+        const data = plantsData.find(pData => pData.id === id)
+        let proD = document.getElementById('proD');
+
+        const details = ` <div class="col-md-6">
+                <img src="${data.image[0]}" alt="Product 1">
+            </div>
+            <div class="col-md-6">
+                <h2>${data.name}</h2>
+                <h5>${data.type}</h5>
+                <hr>
+                <p> <b>Category: </b>${data.category} </p>
+                <p> <b>Sunlight: </b>${data.sunlight}</p>
+                <hr>
+                <p>${data.description}</p>
+                <hr>
+                <h4>${data.price}</h4>
+                <button class="btn btn-outline-success">Add to Cart</button>
+            </div>`;
+
+            proD.innerHTML += details
+    </script>
 </body>
 </html>
